@@ -1,39 +1,19 @@
-import React, {useState, useEffect} from "react";
-import axios from "axios";
+import React from "react";
 import "components/Application.scss";
 import DayList from "./DayList";
 import Appointment from "components/Appointment/index";
 import {getAppointmentsForDay, getInterview, getInterviewersForDay} from "helpers/selectors";
-import { useVisualMode } from "hooks/useVisualMode";
+import {useApplicationData} from "hooks/useApplicationData"
 
 
 export default function Application(props) {
-
-  const [state, setState] = useState({
-    day: "Monday",
-    days: [],
-    appointments: {},
-    interviewers: {},
-  });
-
-  
-  const setDay = day => setState({ ...state, day });
-  
-  useEffect(() => {
-    Promise.all([
-      axios.get("http://localhost:8001/api/days"),
-      axios.get("http://localhost:8001/api/appointments"),
-      axios.get("http://localhost:8001/api/interviewers")
-    ]).then(all => {
-      setState(prev => ({...prev, days:all[0].data, appointments:all[1].data, interviewers:all[2].data}))
-    })
-  }, [])
-  
-  const dailyAppointments = getAppointmentsForDay(state, state.day);
-  const interviewers = getInterviewersForDay(state, state.day)
+const {state, setDay, bookInterview, cancelInterview} = useApplicationData();
  
+  const dailyAppointments = getAppointmentsForDay(state, state.day);
+  const interviewers = getInterviewersForDay(state, state.day);
+
   const appointmentArr = dailyAppointments.map(appointment => {
-    const interview = getInterview(state, appointment.interview)
+  const interview = getInterview(state, appointment.interview);
     
    
     return (<Appointment 
@@ -41,10 +21,12 @@ export default function Application(props) {
       {...appointment}
       interview={interview}
       interviewers={interviewers}
+      bookInterview={bookInterview}
+      cancelInterview={cancelInterview}
     />)
   })
 
-  appointmentArr.push(<Appointment key="last" time="5pm" />)
+  appointmentArr.push(<Appointment key="last" time="5pm"  bookInterview={bookInterview} />)
 
   return (
     <main className="layout">
@@ -57,6 +39,7 @@ export default function Application(props) {
         <hr className="sidebar__separator sidebar--centered" />
         <nav className="sidebar__menu">
           <DayList
+            key = {state.id}
             days={state.days}
             value={state.day}
             onChange={setDay}

@@ -8,10 +8,7 @@ export const useVisualMode = function(initial) {
    }
 
     function back() {
-      if(history.length <= 1) {
-        return;
-      }
-      setHistory(history.slice(0,-1));
+      if (history.length > 1) setHistory(history.slice(0,-1));
     };
   
   const mode = history[history.length - 1]

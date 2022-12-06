@@ -5,8 +5,6 @@ import InterviewerList from "components/InterviewerList";
 export default function Form(props){
   const [student, setStudent] = useState(props.student || "");
   const [interviewer, setInterviewer] = useState(props.interviewer || null);
-  // console.log({interviewer})
-  // console.log({student})
 
   const reset = () => {
     setStudent("");
