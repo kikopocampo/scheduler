@@ -64,7 +64,11 @@ export const useApplicationData = () => {
     interviewers: {},
   });
   
-  
+  // useEffect(() => {
+  //   const webSocket = new WebSocket('ws://localhost:8001');
+
+  //   webSocket.send("Hello")
+  // }, []);
   
   useEffect(() => {
     Promise.all([
