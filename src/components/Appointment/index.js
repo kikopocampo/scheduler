@@ -3,9 +3,10 @@ import "components/Appointment/styles.scss";
 import Show from "./Show";
 import Empty from "./Empty";
 import Form from "./Form";
-import Status from "./Status"
-import Confirm from "./Confirm"
-import Error from "./Error"
+import Status from "./Status";
+import Confirm from "./Confirm";
+import Error from "./Error";
+import Header from "./Header";
 import { useVisualMode } from "hooks/useVisualMode";
 
 
@@ -48,7 +49,7 @@ export default function Appointment(props) {
 
   return (
     <article className="appointment" data-testid="appointment">
-    <header>{props.time}</header>
+    <Header time={props.time}/>
     {mode === EMPTY && <Empty onAdd={() => transition(CREATE)} />}
     {mode === SHOW && <Show
       student={props.interview.student}
@@ -83,9 +84,6 @@ export default function Appointment(props) {
     {mode === ERROR_DELETE && <Error 
     message="Could not delete appointment"
     onClose={back}/>}
-    <hr
-              className="appointment__separator"
-            />
     </article>
   )
 }
