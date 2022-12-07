@@ -47,7 +47,7 @@ export default function Appointment(props) {
   }
 
   return (
-    <article className="appointment">
+    <article className="appointment" data-testid="appointment">
     <header>{props.time}</header>
     {mode === EMPTY && <Empty onAdd={() => transition(CREATE)} />}
     {mode === SHOW && <Show
@@ -62,6 +62,7 @@ export default function Appointment(props) {
       onCancel={back}
     />}
     {mode === EDIT && <Form 
+      
       student = {props.interview.student}
       interviewer = {props.interview.interviewer.id}
       interviewers = {props.interviewers}
@@ -82,6 +83,9 @@ export default function Appointment(props) {
     {mode === ERROR_DELETE && <Error 
     message="Could not delete appointment"
     onClose={back}/>}
+    <hr
+              className="appointment__separator"
+            />
     </article>
   )
 }
