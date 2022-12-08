@@ -27,6 +27,7 @@ The app lets the user create an appointment by clicking on the + button which in
 ![creation](./public/images/create.gif)
 
 Editing the form is also possible if the booking is already made. By pressing the "edit" button, the user will then be shown a form pre-filled with the current value of the appointment. After editing, hitting save will save the new values.
+
 ![edit](./public/images/edit.gif)
 
 Wrong booking date? As with edit, it is also possible to cancel. Upon clicking the "delete" button, a confirmation portion will then be displayed to confirm the action to the user.
