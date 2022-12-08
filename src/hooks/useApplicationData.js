@@ -29,7 +29,7 @@ export const useApplicationData = () => {
     return {dayPosition: getDaySelected.id - 1, daySlots:slots.length};
   };
 
-  // const setDay = day => setState({ ...state, day });
+  const setDay = day => setState({ ...state, day });
 
   function bookInterview(id, interview) {
     const appointment = {
