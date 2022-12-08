@@ -9,6 +9,7 @@ export function getAppointmentsForDay(state, day) {
         return state.appointments[key]
       }
     }
+  return null;
   //if undefined, short-short circuiting is used to return [] instead of undefined
   }) || [];
 }
@@ -40,6 +41,7 @@ export function getInterviewersForDay(state, day) {
       }
     }
   //if undefined, short-short circuiting is used to return [] instead of undefined
+  return null;
   }) || [];
 }
 
