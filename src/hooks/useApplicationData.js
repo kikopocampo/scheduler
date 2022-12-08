@@ -20,7 +20,7 @@ export const useApplicationData = () => {
     })
     
   }, [])
-  
+  //gets the remaining spots that returns the index and the remaining spots
   const getRemainingSpots = (appId,state) => {
     const getDaySelected = state.days.find(d => {
       return d.appointments.find(app => app === appId)
@@ -30,7 +30,7 @@ export const useApplicationData = () => {
   };
 
   const setDay = day => setState({ ...state, day });
-
+  //bookinterview updates the data if a new interview is inputted
   function bookInterview(id, interview) {
     const appointment = {
       ...state.appointments[id],
@@ -61,7 +61,7 @@ export const useApplicationData = () => {
       })
   
   };
-
+  //cancelinterview deletes the interview and replaces it with null
   function cancelInterview(id) {
     const appointment = {
       ...state.appointments[id],
