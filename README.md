@@ -1,7 +1,7 @@
 # Interview Scheduler
 ![title](./public/images/title.jpg)
 ## About
-Interview Scheduler is an app that lets the host organize and manage interviews in a more efficient manner. 
+Interview Scheduler is a React appllication that lets the host organize and manage interviews in a more efficient manner. 
 
 It lets users (interviewees) create, edit, and delete their schedule for interviews.
 
